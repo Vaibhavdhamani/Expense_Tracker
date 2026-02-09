@@ -1,0 +1,76 @@
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-glass, rgba(139, 92, 246, 0.1));
+  border: 1px solid var(--border, rgba(139, 92, 246, 0.2));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: #8b5cf6;
+  transform: scale(1.05);
+}
+
+.toggle-icon-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sun-icon,
+.moon-icon {
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Mode State */
+.toggle-icon-wrapper.light .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #f59e0b;
+}
+
+.toggle-icon-wrapper.light .moon-icon {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.5);
+  color: #8b5cf6;
+}
+
+/* Dark Mode State */
+.toggle-icon-wrapper.dark .sun-icon {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0.5);
+  color: #f59e0b;
+}
+
+.toggle-icon-wrapper.dark .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: #8b5cf6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dark-mode-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sun-icon,
+  .moon-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,704 @@
+{
+  "info": {
+    "name": "Smart Expense Tracker API",
+    "description": "Complete API collection for testing Smart Expense Tracker with Budget Prediction",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "user_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "category_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "expense_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "budget_id",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_rivera\",\n  \"email\": \"alex@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": ["{{base_url}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get User by Email",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/by-email?email=alex@example.com",
+              "host": ["{{base_url}}"],
+              "path": ["users", "by-email"],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "alex@example.com"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"alex_rivera_updated\",\n  \"email\": \"alex.updated@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["users", "{{user_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": ["{{base_url}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories/{{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["categories", "{{category_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Custom Category\",\n  \"icon\": \"💰\",\n  \"color\": \"#10b981\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": ["{{base_url}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "Get Category Descriptions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categories/{{category_id}}/descriptions",
+              "host": ["{{base_url}}"],
+              "path": ["categories", "{{category_id}}", "descriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get All Descriptions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/descriptions",
+              "host": ["{{base_url}}"],
+              "path": ["descriptions"]
+            }
+          }
+        },
+        {
+          "name": "Create Standard Description",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category_id\": 1,\n  \"description\": \"Custom Description\",\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/descriptions",
+              "host": ["{{base_url}}"],
+              "path": ["descriptions"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expenses",
+      "item": [
+        {
+          "name": "Create Expense",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"category_id\": 1,\n  \"amount\": 24.50,\n  \"description\": \"Burger Palace\",\n  \"notes\": \"Lunch with friends\",\n  \"date\": \"2024-02-02T12:45:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/expenses",
+              "host": ["{{base_url}}"],
+              "path": ["expenses"]
+            }
+          }
+        },
+        {
+          "name": "Get All Expenses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses?user_id={{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["expenses"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expenses (Last 30 Days)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses?user_id={{user_id}}&days=30",
+              "host": ["{{base_url}}"],
+              "path": ["expenses"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "days",
+                  "value": "30"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expenses (Last 15 Days)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses?user_id={{user_id}}&days=15",
+              "host": ["{{base_url}}"],
+              "path": ["expenses"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "days",
+                  "value": "15"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expenses (Custom Date Range)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses?user_id={{user_id}}&start_date=2024-01-01T00:00:00Z&end_date=2024-02-02T23:59:59Z",
+              "host": ["{{base_url}}"],
+              "path": ["expenses"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "start_date",
+                  "value": "2024-01-01T00:00:00Z"
+                },
+                {
+                  "key": "end_date",
+                  "value": "2024-02-02T23:59:59Z"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expenses by Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses?user_id={{user_id}}&category_id={{category_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["expenses"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "category_id",
+                  "value": "{{category_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expense by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses/{{expense_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["expenses", "{{expense_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Expense",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 30.00,\n  \"description\": \"Burger Palace - Updated\",\n  \"notes\": \"Lunch with friends - Updated notes\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/expenses/{{expense_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["expenses", "{{expense_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Expense",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses/{{expense_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["expenses", "{{expense_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Expense Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses/summary?user_id={{user_id}}&days=30",
+              "host": ["{{base_url}}"],
+              "path": ["expenses", "summary"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "days",
+                  "value": "30"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Expense Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/expenses/stats?user_id={{user_id}}&days=30",
+              "host": ["{{base_url}}"],
+              "path": ["expenses", "stats"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "days",
+                  "value": "30"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Budgets",
+      "item": [
+        {
+          "name": "Create Budget",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"category_id\": 1,\n  \"amount\": 600.00,\n  \"period\": \"monthly\",\n  \"start_date\": \"2024-02-01T00:00:00Z\",\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/budgets",
+              "host": ["{{base_url}}"],
+              "path": ["budgets"]
+            }
+          }
+        },
+        {
+          "name": "Get All Budgets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/budgets?user_id={{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["budgets"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Active Budgets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/budgets?user_id={{user_id}}&is_active=true",
+              "host": ["{{base_url}}"],
+              "path": ["budgets"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "is_active",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Budget by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/budgets/{{budget_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["budgets", "{{budget_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Budget",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 700.00,\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/budgets/{{budget_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["budgets", "{{budget_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Budget",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/budgets/{{budget_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["budgets", "{{budget_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Budget Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/budgets/status?user_id={{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["budgets", "status"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Predictions & Insights",
+      "item": [
+        {
+          "name": "Train ML Model",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predictions/train",
+              "host": ["{{base_url}}"],
+              "path": ["predictions", "train"]
+            }
+          }
+        },
+        {
+          "name": "Get Budget Prediction (Monthly)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"period\": \"monthly\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predictions/predict",
+              "host": ["{{base_url}}"],
+              "path": ["predictions", "predict"]
+            }
+          }
+        },
+        {
+          "name": "Get Budget Prediction (Weekly)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"period\": \"weekly\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predictions/predict",
+              "host": ["{{base_url}}"],
+              "path": ["predictions", "predict"]
+            }
+          }
+        },
+        {
+          "name": "Get Prediction History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/predictions/history?user_id={{user_id}}&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["predictions", "history"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Spending Insights",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/insights/spending?user_id={{user_id}}&days=30",
+              "host": ["{{base_url}}"],
+              "path": ["insights", "spending"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                },
+                {
+                  "key": "days",
+                  "value": "30"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get AI Recommendations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/insights/recommendations?user_id={{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["insights", "recommendations"],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

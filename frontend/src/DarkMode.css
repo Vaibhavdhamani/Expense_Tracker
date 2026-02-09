@@ -1,0 +1,348 @@
+/* ==================== Dark Mode Styles ==================== */
+
+/* Dark Mode Variables */
+.dark-mode {
+  /* Background Colors */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #16161d;
+  --bg-tertiary: #1f1f28;
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass-hover: rgba(255, 255, 255, 0.08);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+  
+  /* Border Colors */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+
+  /* Card Backgrounds */
+  --card-bg: #1f1f28;
+  --card-bg-hover: #252531;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* Body Dark Mode */
+body.dark-mode {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ==================== Component Overrides ==================== */
+
+/* Cards */
+.dark-mode .overview-card,
+.dark-mode .chart-card,
+.dark-mode .budget-card,
+.dark-mode .expense-card,
+.dark-mode .recommendation-card,
+.dark-mode .stat-card,
+.dark-mode .prediction-card {
+  background: var(--card-bg);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.dark-mode .overview-card:hover,
+.dark-mode .chart-card:hover,
+.dark-mode .budget-card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--border-hover);
+}
+
+/* Text Colors */
+.dark-mode .card-label,
+.dark-mode .stat-label,
+.dark-mode .chart-subtitle,
+.dark-mode .dashboard-subtitle,
+.dark-mode .legend-label,
+.dark-mode .category-name {
+  color: var(--text-secondary);
+}
+
+.dark-mode .card-value,
+.dark-mode .stat-value,
+.dark-mode .chart-title,
+.dark-mode .dashboard-title,
+.dark-mode .section-title,
+.dark-mode .recommendation-title {
+  color: var(--text-primary);
+}
+
+.dark-mode .card-meta,
+.dark-mode .stat-meta {
+  color: var(--text-tertiary);
+}
+
+/* Inputs & Selects */
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea,
+.dark-mode .period-selector,
+.dark-mode .date-filter {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+.dark-mode input:focus,
+.dark-mode select:focus,
+.dark-mode textarea:focus {
+  border-color: #8b5cf6;
+  background: var(--bg-secondary);
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Modals */
+.dark-mode .modal-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .expense-form-modal,
+.dark-mode .settings-modal,
+.dark-mode .logout-confirm-modal,
+.dark-mode .budget-form-modal {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+.dark-mode .modal-header {
+  background: var(--bg-tertiary);
+  border-bottom-color: var(--border);
+}
+
+/* Dropdowns */
+.dark-mode .notifications-dropdown {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+.dark-mode .dropdown-header {
+  background: var(--bg-tertiary);
+  border-bottom-color: var(--border);
+}
+
+.dark-mode .notification-item {
+  background: var(--bg-tertiary);
+}
+
+.dark-mode .notification-item:hover {
+  background: var(--bg-glass-hover);
+}
+
+/* Tables */
+.dark-mode table {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.dark-mode thead {
+  background: var(--bg-tertiary);
+  border-bottom-color: var(--border);
+}
+
+.dark-mode tbody tr {
+  border-bottom-color: var(--border);
+}
+
+.dark-mode tbody tr:hover {
+  background: var(--bg-glass-hover);
+}
+
+/* Buttons */
+.dark-mode .icon-btn,
+.dark-mode .btn-secondary {
+  background: var(--bg-glass);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.dark-mode .icon-btn:hover,
+.dark-mode .btn-secondary:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* Navigation */
+.dark-mode .nav-tab {
+  color: var(--text-secondary);
+}
+
+.dark-mode .nav-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass-hover);
+}
+
+.dark-mode .nav-tab.active {
+  color: white;
+}
+
+/* Charts */
+.dark-mode .pie-chart circle {
+  fill: var(--bg-secondary);
+}
+
+.dark-mode .pie-chart text {
+  fill: var(--text-primary);
+}
+
+.dark-mode .bar {
+  background: var(--bg-tertiary);
+}
+
+.dark-mode .legend-item {
+  background: var(--bg-glass);
+}
+
+.dark-mode .legend-item:hover {
+  background: var(--bg-glass-hover);
+}
+
+/* Budget Alerts */
+.dark-mode .budget-alerts-container {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+.dark-mode .budget-alert {
+  background: var(--bg-tertiary);
+}
+
+.dark-mode .budget-alert.critical {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.dark-mode .budget-alert.warning {
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.dark-mode .budget-alert.info {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.dark-mode .budget-alert.success {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* Expense List */
+.dark-mode .expense-item {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+.dark-mode .expense-item:hover {
+  background: var(--card-bg-hover);
+}
+
+/* Budget View */
+.dark-mode .budget-summary-card {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+.dark-mode .budget-progress {
+  background: var(--bg-tertiary);
+}
+
+/* Prediction View */
+.dark-mode .prediction-result {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+.dark-mode .insights-grid {
+  background: var(--card-bg);
+}
+
+/* Loading States */
+.dark-mode .loading-spinner,
+.dark-mode .loading-spinner-large {
+  border-color: var(--bg-tertiary);
+  border-top-color: #8b5cf6;
+}
+
+/* Empty States */
+.dark-mode .empty-state,
+.dark-mode .no-data {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.dark-mode .empty-icon {
+  background: var(--bg-glass);
+}
+
+/* Scrollbars */
+.dark-mode ::-webkit-scrollbar {
+  background: var(--bg-secondary);
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* Gradient Orbs */
+.dark-mode .gradient-orb {
+  opacity: 0.2;
+}
+
+/* Background Pattern */
+.dark-mode .background-pattern {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+/* ==================== Smooth Transitions ==================== */
+body,
+.overview-card,
+.chart-card,
+.budget-card,
+.expense-card,
+input,
+select,
+textarea,
+.modal-overlay,
+.expense-form-modal,
+.notifications-dropdown,
+table,
+.nav-tab {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+/* ==================== Responsive Dark Mode ==================== */
+@media (max-width: 768px) {
+  .dark-mode .app-header {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+  }
+
+  .dark-mode .main-nav {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+  }
+}
