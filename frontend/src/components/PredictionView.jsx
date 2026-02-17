@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, TrendingUp, Zap, RefreshCw, AlertCircle, Calendar, DollarSign, BarChart3, Sparkles, Target, Award } from 'lucide-react';
+import { Brain, TrendingUp, Zap, RefreshCw, AlertCircle, Calendar, BarChart3, Sparkles, Target, Award } from 'lucide-react';
 import './PredictionView.css';
 
 function PredictionView({ userId, apiBase, expenses }) {
@@ -179,8 +179,7 @@ function PredictionView({ userId, apiBase, expenses }) {
             <div className="prediction-content">
               <span className="prediction-label">Predicted Monthly Spending</span>
               <span className="prediction-value">
-                <DollarSign size={32} />
-                {prediction.predicted_amount.toFixed(2)}
+               ₹{prediction.predicted_amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })} 
               </span>
               <div className="prediction-meta">
                 <div className="confidence-badge">
@@ -204,7 +203,7 @@ function PredictionView({ userId, apiBase, expenses }) {
                 </div>
                 <div className="insight-content">
                   <span className="insight-label">Total Spent (30d)</span>
-                  <span className="insight-value">${insights.total_spending.toFixed(2)}</span>
+                  <span className="insight-value">₹{insights.total_spending.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                 </div>
               </div>
               
@@ -214,7 +213,7 @@ function PredictionView({ userId, apiBase, expenses }) {
                 </div>
                 <div className="insight-content">
                   <span className="insight-label">Daily Average</span>
-                  <span className="insight-value">${insights.average_daily.toFixed(2)}</span>
+                  <span className="insight-value">₹{insights.average_daily.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                 </div>
               </div>
               
@@ -234,7 +233,7 @@ function PredictionView({ userId, apiBase, expenses }) {
                 </div>
                 <div className="insight-content">
                   <span className="insight-label">Avg Transaction</span>
-                  <span className="insight-value">${insights.average_transaction.toFixed(2)}</span>
+                  <span className="insight-value">₹{insights.average_transaction.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                 </div>
               </div>
             </div>
@@ -272,7 +271,7 @@ function PredictionView({ userId, apiBase, expenses }) {
                       <div key={category} className="category-item">
                         <div className="category-info">
                           <span className="category-name">{category}</span>
-                          <span className="category-amount">${amount.toFixed(2)}</span>
+                          <span className="category-amount">₹{amount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
                         </div>
                         <div className="category-bar">
                           <div 
@@ -320,7 +319,7 @@ function PredictionView({ userId, apiBase, expenses }) {
           </button>
         </div>
       )}
-    </div>
+    </div>  
   );
 }
 
