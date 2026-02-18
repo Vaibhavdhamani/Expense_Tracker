@@ -241,6 +241,164 @@
   border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block;
 }
 
+/* ==================== Password Modal ==================== */
+.password-modal { max-width: 480px; }
+.modal-header-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(99,102,241,0.15));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #8b5cf6;
+  margin-right: 12px;
+}
+.modal-header-icon.danger {
+  background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(220,38,38,0.15));
+  color: #ef4444;
+}
+.modal-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 400;
+  margin: 4px 0 0 0;
+}
+.password-field {
+  margin-bottom: 20px;
+}
+.password-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-with-icon svg {
+  position: absolute;
+  left: 12px;
+  color: #8b5cf6;
+  pointer-events: none;
+}
+.input-with-icon input {
+  width: 100%;
+  padding: 11px 12px 11px 42px;
+  border: 1px solid rgba(139,92,246,0.25);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #fff;
+  transition: all 0.2s;
+}
+.input-with-icon input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.12);
+}
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.toggle-password:hover {
+  color: #8b5cf6;
+}
+
+/* ==================== Delete Account Modal ==================== */
+.delete-modal { max-width: 520px; }
+.modal-header.danger {
+  background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(220,38,38,0.08));
+  border-bottom-color: rgba(239,68,68,0.15);
+}
+.delete-warning {
+  background: rgba(239,68,68,0.05);
+  border: 1px solid rgba(239,68,68,0.15);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 24px;
+  animation: shake 0.5s ease-in-out;
+}
+.delete-warning svg {
+  color: #ef4444;
+  margin-bottom: 12px;
+}
+.delete-warning h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ef4444;
+}
+.delete-warning p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #64748b;
+}
+.delete-warning ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.delete-warning li {
+  font-size: 13px;
+  color: #1e293b;
+  padding: 6px 0;
+  padding-left: 24px;
+  position: relative;
+}
+.delete-warning li::before {
+  content: "✗";
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  font-weight: bold;
+}
+.delete-confirm-input {
+  margin-bottom: 20px;
+}
+.delete-confirm-input label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+.delete-confirm-input strong {
+  color: #ef4444;
+  font-family: 'Space Mono', monospace;
+}
+.danger-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid rgba(239,68,68,0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Space Mono', monospace;
+  color: #ef4444;
+  background: rgba(239,68,68,0.05);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+}
+.danger-input:focus {
+  outline: none;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+}
+.danger-input::placeholder {
+  color: rgba(239,68,68,0.4);
+}
+
 /* ==================== Logout Modal ==================== */
 .logout-confirm-modal {
   position: fixed; top: 50%; left: 50%;
@@ -256,6 +414,7 @@
   background: linear-gradient(135deg,rgba(139,92,246,0.1),rgba(99,102,241,0.1));
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   margin: 0 auto 20px; color: #8b5cf6;
+  animation: bounce 0.6s ease-in-out;
 }
 .logout-confirm-modal h3 { margin: 0 0 10px 0; font-size: 22px; font-weight: 700; color: #1e293b; }
 .logout-confirm-modal p  { margin: 0 0 24px 0; font-size: 14px; color: #64748b; }
@@ -269,8 +428,30 @@
   from{opacity:0;transform:translate(-50%,-50%) scale(0.93)}
   to  {opacity:1;transform:translate(-50%,-50%) scale(1)}
 }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.8;transform:scale(1.1)} }
+@keyframes pulse { 
+  0%,100%{opacity:1;transform:scale(1)} 
+  50%{opacity:.8;transform:scale(1.1)} 
+}
 @keyframes spin  { to{transform:rotate(360deg)} }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-5px); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.6); }
+}
 
 /* ==================== Responsive ==================== */
 @media (max-width: 640px) {

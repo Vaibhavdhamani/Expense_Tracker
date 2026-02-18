@@ -179,7 +179,7 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
           </div>
           <div className="card-content">
             <span className="card-label">Total Spent</span>
-            <span className="card-value">${safeSummary.total_spending.toFixed(2)}</span>
+            <span className="card-value">₹{safeSummary.total_spending.toFixed(2)}</span>
             <span className="card-meta">{selectedPeriod} days period</span>
           </div>
           {safeSummary.daily_breakdown.length > 0 && (
@@ -210,17 +210,17 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
           </div>
           <div className="card-content">
             <span className="card-label">Daily Average</span>
-            <span className="card-value">${safeSummary.average_daily.toFixed(2)}</span>
+            <span className="card-value">₹{safeSummary.average_daily.toFixed(2)}</span>
             <span className="card-meta">Average per day</span>
           </div>
           <div className="card-stat-mini">
             <div className="stat-item">
               <span className="stat-label">Max</span>
-              <span className="stat-value">${safeInsights.max_transaction.toFixed(0)}</span>
+              <span className="stat-value">₹{safeInsights.max_transaction.toFixed(0)}</span>
             </div>
             <div className="stat-item">
               <span className="stat-label">Avg</span>
-              <span className="stat-value">${safeInsights.average_transaction.toFixed(0)}</span>
+              <span className="stat-value">₹{safeInsights.average_transaction.toFixed(0)}</span>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
             <span className="card-label">Budget Status</span>
             <span className="card-value">{budgetPercentage.toFixed(0)}%</span>
             <span className={`card-meta ${budgetRemaining < 0 ? 'negative' : ''}`}>
-              ${Math.abs(budgetRemaining).toFixed(2)} {budgetRemaining >= 0 ? 'remaining' : 'over budget'}
+              ₹{Math.abs(budgetRemaining).toFixed(2)}{budgetRemaining >= 0 ? 'remaining' : 'over budget'}
             </span>
           </div>
           {totalBudgeted > 0 && (
@@ -355,7 +355,7 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
                         })}
                         <circle cx="100" cy="100" r="50" fill="white" />
                         <text x="100" y="95" textAnchor="middle" fill="#1e293b" fontSize="24" fontWeight="700">
-                          ${totalCategorySpent.toFixed(0)}
+                          ₹{totalCategorySpent.toFixed(0)}
                         </text>
                         <text x="100" y="112" textAnchor="middle" fill="#64748b" fontSize="12">
                           Total Spent
@@ -374,7 +374,7 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
                               <span className="legend-color" style={{ background: cat.color }}></span>
                               <span className="legend-label">{cat.icon} {cat.category}</span>
                               <div className="legend-values">
-                                {showValues && <span className="legend-value">${cat.total.toFixed(0)}</span>}
+                                {showValues && <span className="legend-value">₹{cat.total.toFixed(0)}</span>}
                                 <span className="legend-percent">{percentage.toFixed(1)}%</span>
                               </div>
                             </div>
@@ -417,7 +417,7 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
                           </div>
                           {showValues && (
                             <div className="category-bar-values">
-                              <span className="category-amount">${cat.total.toFixed(0)}</span>
+                              <span className="category-amount">₹{cat.total.toFixed(0)}</span>
                               <span className="category-percent">{percentage.toFixed(1)}%</span>
                             </div>
                           )}
@@ -475,7 +475,7 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
                           <div 
                             className={`bar ${isToday ? 'today' : ''}`}
                             style={{ height: `${height}%` }}
-                            data-value={`$${(day.total || 0).toFixed(2)}`}
+                             data-value={`₹${(day.total || 0).toFixed(2)}`}
                             data-date={date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                           >
                             <div className="bar-fill"></div>
@@ -546,12 +546,12 @@ function Dashboard({ expenses, budgets, categories, dateRange, userId, apiBase }
                   <span className="stat-value">
                     {categoryData[0].icon} {categoryData[0].category}
                   </span>
-                  <span className="stat-meta">${categoryData[0].total.toFixed(2)}</span>
+                  <span className="stat-meta">₹{categoryData[0].total.toFixed(2)}</span>
                 </div>
                 <div className="stat-card">
                   <span className="stat-icon">💰</span>
                   <span className="stat-label">Avg per Transaction</span>
-                  <span className="stat-value">${safeInsights.average_transaction.toFixed(2)}</span>
+                  <span className="stat-value">₹{safeInsights.average_transaction.toFixed(2)}</span>
                   <span className="stat-meta">{safeInsights.num_transactions} transactions</span>
                 </div>
                 <div className="stat-card">
